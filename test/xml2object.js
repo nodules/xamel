@@ -3,7 +3,7 @@ var util = require('util'),
     xamel = require('../lib/xamel');
 
 test(
-    'simple.xml (well-formed, trim white-spaces, no comments, no xmlns, no cdata)',
+    'xml2object (simple.xml)',
     ['simple.xml', 'simple.json'],
     function(files, beforeExit, assert) {
         var xml = files[0],

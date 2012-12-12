@@ -1,10 +1,9 @@
 var xamel = require('../lib/xamel'),
     NodeSet = xamel.NodeSet,
+    Tag = xamel.Tag,
+    Comment = xamel.Comment,
     test = {};
 
-/* *
- * NodeSet
- */
 test['NodeSet (constructor)'] = function(beforeExit, assert) {
     var nset = new NodeSet('Hello,', 'World!'),
         ARRAY = ['Hello,', 'World!'];
@@ -64,7 +63,7 @@ test['NodeSet (toString)'] = function(beforeExit, assert) {
 };
 
 test['NodeSet (find)'] = function(beforeExit, assert) {
-
+    // @todo
 };
 
 module.exports = test;
