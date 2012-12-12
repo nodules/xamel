@@ -1,0 +1,158 @@
+{"childs" : [
+    {
+        "childs" : [
+            {
+                "childs" : ["Belgian Waffles"],
+                "name" : "name",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["5.95"],
+                "name" : "price",
+                "attrs" : {
+                    "discount" : "15",
+                    "currency" : "USD"
+                }
+            },
+            {
+                "childs" : ["two of our famous Belgian Waffles with plenty of real maple syrup"],
+                "name" : "description",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["650"],
+                "name" : "calories",
+                "attrs" : {}
+            }
+        ],
+        "name" : "food",
+        "attrs" : {
+            "id" : "1"
+        }
+    },
+    {
+        "childs" : [
+            {
+                "childs" : ["Strawberry Belgian Waffles"],
+                "name" : "name",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["7.95"],
+                "name" : "price",
+                "attrs" : {
+                    "currency" : "USD"
+                }
+            },
+            {
+                "childs" : ["light Belgian waffles covered with strawberries and whipped cream"],
+                "name" : "description",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["900"],
+                "name" : "calories",
+                "attrs" : {
+                    "variance" : "0.05"
+                }
+            }
+        ],
+        "name" : "food",
+        "attrs" : {
+            "id" : "2"
+        }
+    },
+    {
+        "childs" : [
+            {
+                "childs" : ["Berry-Berry Belgian Waffles"],
+                "name" : "name",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["8.95"],
+                "name" : "price",
+                "attrs" : {
+                    "currency" : "EUR"
+                }
+            },
+            {
+                "childs" : ["light Belgian waffles covered with an assortment of fresh berries and whipped cream"],
+                "name" : "description",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["900"],
+                "name" : "calories",
+                "attrs" : {}
+            }
+        ],
+        "name" : "food",
+        "attrs" : {
+            "id" : "3"
+        }
+    },
+    {
+        "childs" : [
+            {
+                "childs" : ["French Toast"],
+                "name" : "name",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["4.50"],
+                "name" : "price",
+                "attrs" : {
+                    "currency" : "USD"
+                }
+            },
+            {
+                "childs" : ["thick slices made from our homemade sourdough bread"],
+                "name" : "description",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["600"],
+                "name" : "calories",
+                "attrs" : {}
+            }
+        ],
+        "name" : "food",
+        "attrs" : {
+            "id" : "4"
+        }
+    },
+    {
+        "childs" : [
+            {
+                "childs" : ["Homestyle Breakfast"],
+                "name" : "name",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["6.95"],
+                "name" : "price",
+                "attrs" : {
+                    "currency" : "EUR"
+                }
+            },
+            {
+                "childs" : ["two eggs, bacon or sausage, toast, and our ever-popular hash browns"],
+                "name" : "description",
+                "attrs" : {}
+            },
+            {
+                "childs" : ["950"],
+                "name" : "calories",
+                "attrs" : {}
+            }
+        ],
+        "name" : "food",
+        "attrs" : {
+            "id" : "5"
+        }
+    }
+], "name" : "breakfast_menu", "attrs" : {
+    "revision" : "2134",
+    "owner" : "Chief"
+}}

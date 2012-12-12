@@ -1,0 +1,28 @@
+{
+  "name": "node-xamel",
+  "version": "0.1.0",
+  "description": "XML to JSON and JSON to XML converter",
+  "main": "lib/xamel.js",
+  "scripts": {
+    "test": "node ./node_modules/expresso/bin/expresso"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://git@bitbucket.org/kaero/node-xamel.git"
+  },
+  "keywords": [
+    "xml",
+    "json",
+    "parser",
+    "converter",
+    "sax"
+  ],
+  "author": "Philipp Kovalev",
+  "license": "MIT",
+  "dependencies": {
+      "sax": "0.4.x"
+  },
+  "devDependencies": {
+      "expresso": "0.9.x"
+  }
+}
