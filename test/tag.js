@@ -16,13 +16,6 @@ test['Tag (name)'] = function(beforeExit, assert) {
         tag = new Tag(TAG_NAME);
 
     assert.strictEqual(tag.name, TAG_NAME);
-
-    // checks `name` read-only
-    tag.name = 'hello';
-    assert.strictEqual(tag.name, TAG_NAME);
-
-    // checks `name` enumerable
-    assert.strictEqual(Object.keys(tag).indexOf('name') > -1, true);
 };
 
 test['Tag (attrs)'] = function(beforeExit, assert) {
@@ -30,16 +23,6 @@ test['Tag (attrs)'] = function(beforeExit, assert) {
         tag = new Tag('root', attrs);
 
     assert.deepEqual(tag.attrs, attrs);
-
-    // checks `attrs` read-only
-    tag.attrs = { id : 'item_3' };
-    assert.deepEqual(tag.attrs, attrs);
-    tag.attrs.name = 'Xamel Schemanzky';
-    tag.attrs.displayName = 'XamelZK';
-    assert.deepEqual(tag.attrs, attrs);
-
-    // checks `attrs` enumerable
-    assert.strictEqual(Object.keys(tag).indexOf('attrs') > -1, true);
 };
 
 test['Tag (parent)'] = function(beforeExit, assert) {
@@ -48,13 +31,6 @@ test['Tag (parent)'] = function(beforeExit, assert) {
         tag = new Tag('xtag', null, parent);
 
     assert.strictEqual(tag.parent, parent);
-
-    // checks `parent` read-only
-    tag.parent = notParent;
-    assert.strictEqual(tag.parent, parent);
-
-    // checks `parent` NOT enumerable
-    assert.strictEqual(Object.keys(tag).indexOf('parent'), -1);
 };
 
 test['Tag (toJSON)'] = function(beforeExit, assert) {

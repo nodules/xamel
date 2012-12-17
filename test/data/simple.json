@@ -1,158 +1,150 @@
-{"childs" : [
+[
     {
+        "name" : "breakfast_menu",
+        "attrs" : {
+            "revision" : "2134",
+            "owner" : "Chief"
+        },
         "childs" : [
             {
-                "childs" : ["Belgian Waffles"],
-                "name" : "name",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["5.95"],
-                "name" : "price",
+                "name" : "food",
                 "attrs" : {
-                    "discount" : "15",
-                    "currency" : "USD"
-                }
+                    "id" : "1"
+                },
+                "childs" : [
+                    {
+                        "name" : "name",
+                        "text" : "Belgian Waffles"
+                    },
+                    {
+                        "name" : "price",
+                        "attrs" : {
+                            "discount" : "15",
+                            "currency" : "USD"
+                        },
+                        "text" : "5.95"
+                    },
+                    {
+                        "name" : "description",
+                        "text" : "two of our famous Belgian Waffles with plenty of real maple syrup"
+                    },
+                    {
+                        "name" : "calories",
+                        "text" : "650"
+                    }
+                ]
             },
             {
-                "childs" : ["two of our famous Belgian Waffles with plenty of real maple syrup"],
-                "name" : "description",
-                "attrs" : {}
+                "name" : "food",
+                "attrs" : {
+                    "id" : "2"
+                },
+                "childs" : [
+                    {
+                        "name" : "name",
+                        "text" : "Strawberry Belgian Waffles"
+                    },
+                    {
+                        "name" : "price",
+                        "attrs" : {
+                            "currency" : "USD"
+                        },
+                        "text" : "7.95"
+                    },
+                    {
+                        "name" : "description",
+                        "text" : "light Belgian waffles covered with strawberries and whipped cream"
+                    },
+                    {
+                        "name" : "calories",
+                        "attrs" : {
+                            "variance" : "0.05"
+                        },
+                        "text" : "900"
+                    }
+                ]
             },
             {
-                "childs" : ["650"],
-                "name" : "calories",
-                "attrs" : {}
+                "name" : "food",
+                "attrs" : {
+                    "id" : "3"
+                },
+                "childs" : [
+                    {
+                        "name" : "name",
+                        "text" : "Berry-Berry Belgian Waffles"
+                    },
+                    {
+                        "name" : "price",
+                        "attrs" : {
+                            "currency" : "EUR"
+                        },
+                        "text" : "8.95"
+                    },
+                    {
+                        "name" : "description",
+                        "text" : "light Belgian waffles covered with an assortment of fresh berries and whipped cream"
+                    },
+                    {
+                        "name" : "calories",
+                        "text" : "900"
+                    }
+                ]
+            },
+            {
+                "name" : "food",
+                "attrs" : {
+                    "id" : "4"
+                },
+                "childs" : [
+                    {
+                        "name" : "name",
+                        "text" : "French Toast"
+                    },
+                    {
+                        "name" : "price",
+                        "attrs" : {
+                            "currency" : "USD"
+                        },
+                        "text" : "4.50"
+                    },
+                    {
+                        "name" : "description",
+                        "text" : "thick slices made from our homemade sourdough bread"
+                    },
+                    {
+                        "name" : "calories",
+                        "text" : "600"
+                    }
+                ]
+            },
+            {
+                "name" : "food",
+                "attrs" : {
+                    "id" : "5"
+                },
+                "childs" : [
+                    {
+                        "name" : "name",
+                        "text" : "Homestyle Breakfast"
+                    },
+                    {
+                        "name" : "price",
+                        "attrs" : {
+                            "currency" : "EUR"
+                        },
+                        "text" : "6.95"
+                    },
+                    {
+                        "name" : "description",
+                        "text" : "two eggs, bacon or sausage, toast, and our ever-popular hash browns"
+                    },
+                    {
+                        "name" : "calories",
+                        "text" : "950"
+                    }
+                ]
             }
-        ],
-        "name" : "food",
-        "attrs" : {
-            "id" : "1"
-        }
-    },
-    {
-        "childs" : [
-            {
-                "childs" : ["Strawberry Belgian Waffles"],
-                "name" : "name",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["7.95"],
-                "name" : "price",
-                "attrs" : {
-                    "currency" : "USD"
-                }
-            },
-            {
-                "childs" : ["light Belgian waffles covered with strawberries and whipped cream"],
-                "name" : "description",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["900"],
-                "name" : "calories",
-                "attrs" : {
-                    "variance" : "0.05"
-                }
-            }
-        ],
-        "name" : "food",
-        "attrs" : {
-            "id" : "2"
-        }
-    },
-    {
-        "childs" : [
-            {
-                "childs" : ["Berry-Berry Belgian Waffles"],
-                "name" : "name",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["8.95"],
-                "name" : "price",
-                "attrs" : {
-                    "currency" : "EUR"
-                }
-            },
-            {
-                "childs" : ["light Belgian waffles covered with an assortment of fresh berries and whipped cream"],
-                "name" : "description",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["900"],
-                "name" : "calories",
-                "attrs" : {}
-            }
-        ],
-        "name" : "food",
-        "attrs" : {
-            "id" : "3"
-        }
-    },
-    {
-        "childs" : [
-            {
-                "childs" : ["French Toast"],
-                "name" : "name",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["4.50"],
-                "name" : "price",
-                "attrs" : {
-                    "currency" : "USD"
-                }
-            },
-            {
-                "childs" : ["thick slices made from our homemade sourdough bread"],
-                "name" : "description",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["600"],
-                "name" : "calories",
-                "attrs" : {}
-            }
-        ],
-        "name" : "food",
-        "attrs" : {
-            "id" : "4"
-        }
-    },
-    {
-        "childs" : [
-            {
-                "childs" : ["Homestyle Breakfast"],
-                "name" : "name",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["6.95"],
-                "name" : "price",
-                "attrs" : {
-                    "currency" : "EUR"
-                }
-            },
-            {
-                "childs" : ["two eggs, bacon or sausage, toast, and our ever-popular hash browns"],
-                "name" : "description",
-                "attrs" : {}
-            },
-            {
-                "childs" : ["950"],
-                "name" : "calories",
-                "attrs" : {}
-            }
-        ],
-        "name" : "food",
-        "attrs" : {
-            "id" : "5"
-        }
+        ]
     }
-], "name" : "breakfast_menu", "attrs" : {
-    "revision" : "2134",
-    "owner" : "Chief"
-}}
+]

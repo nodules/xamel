@@ -12,8 +12,8 @@ test(
 
         xamel.xml2object(xml, { trim : true }, function(error, result) {
             assertions += 1;
-            //console.log(JSON.stringify(result));
-            assert.deepEqual(JSON.parse(json), result, 'xml & json assertion');
+//            console.log(JSON.stringify(result));
+            assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
         });
 
         beforeExit(function() {
