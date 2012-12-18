@@ -78,9 +78,21 @@ test['NodeSet (get)'] = function(beforeExit, assert) {
 
     assert.strictEqual(nsetAll.length, nset.length);
     assert.strictEqual(nsetTags.length, 2);
+    nsetTags.forEach(function(tag) {
+            assert.ok(tag instanceof Tag);
+        });
+    assert.strictEqual(nsetRootTag.length, 1);
     assert.strictEqual(nsetRootTag.childs[0].name, 'root');
+    assert.strictEqual(nsetText.length, 2);
     assert.strictEqual(nsetText.join(' '), 'Hello, World!');
+    nsetText.forEach(function(text) {
+            assert.ok(typeof text === 'string');
+        });
+    assert.strictEqual(nsetComments.length, 2);
     assert.strictEqual(nsetComments.join(' '), 'the wall');
+    nsetComments.forEach(function(comment) {
+            assert.ok(comment instanceof Comment);
+        });
 };
 
 test['NodeSet (find)'] = function(beforeExit, assert) {
