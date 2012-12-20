@@ -123,16 +123,67 @@ test['NodeSet (find)'] = function(beforeExit, assert) {
     });
 };
 
+/**
+ * @param {NodeSet} nset
+ * @param {Number} count of children to generate
+ * @param {Function} generator (index, nset) returns node
+ */
+function generateChilds(nset, count, generator) {
+    var i = 0;
+
+    for (; i < count; i++) {
+        nset.append(generator(i, nset));
+    }
+}
+
 test['NodeSet (explode)'] = function(beforeExit, assert) {
-    // @todo
+    var nset = new NodeSet('Hello', 'World', new Comment('test'), new Tag('xxx', {}, null)),
+        tag = new Tag('comments', {}, null),
+        nsetExploded;
+
+    generateChilds(tag, 100, function(i) {
+        return new Tag('comment', { id : i }, tag);
+    });
+
+    nsetExploded = nset.append(tag).explode();
+
+    assert.strictEqual(nsetExploded.length, tag.length);
+
+    nsetExploded.forEach(function(child, idx) {
+        assert.strictEqual(child, tag.childs[idx]);
+    });
 };
 
 test['NodeSet (hasAttr)'] = function(beforeExit, assert) {
-    // @todo
+    var TAG_ONE = 'one',
+        TAG_TWO = 'two',
+        nset = new NodeSet(
+            new Tag(TAG_ONE, { one : 'true' }, null),
+            new Tag(TAG_TWO, { two : 'true' }, null)),
+        nsetOne = nset.hasAttr('one'),
+        nsetTwo = nset.hasAttr('two');
+
+    assert.strictEqual(nsetOne.length, 1);
+    assert.strictEqual(nsetTwo.length, 1);
+
+    assert.strictEqual(nsetOne.childs[0].name, TAG_ONE);
+    assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
 };
 
 test['NodeSet (isAttr)'] = function(beforeExit, assert) {
-    // @todo
+    var TAG_ONE = 'one',
+        TAG_TWO = 'two',
+        nset = new NodeSet(
+                new Tag(TAG_ONE, { id : 1 }, null),
+                new Tag(TAG_TWO, { id : 2 }, null)),
+        nsetOne = nset.isAttr('id', 1),
+        nsetTwo = nset.isAttr('id', 2);
+
+    assert.strictEqual(nsetOne.length, 1);
+    assert.strictEqual(nsetTwo.length, 1);
+
+    assert.strictEqual(nsetOne.childs[0].name, TAG_ONE);
+    assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
 };
 
 module.exports = test;
