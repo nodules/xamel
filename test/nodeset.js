@@ -2,6 +2,7 @@ var xamel = require('../lib/xamel'),
     NodeSet = xamel.NodeSet,
     Tag = xamel.Tag,
     Comment = xamel.Comment,
+    fs = require('fs'),
     test = {};
 
 test['NodeSet (constructor)'] = function(beforeExit, assert) {
@@ -70,13 +71,16 @@ test['NodeSet (get)'] = function(beforeExit, assert) {
             new Comment('wall'),
             new Tag('help', {}, null),
             'World!'),
-        nsetAll = nset.get('.'),
+        nsetAll = nset.get('node()'),
         nsetTags = nset.get('*'),
         nsetRootTag = nset.get('root'),
         nsetText = nset.get('text()'),
         nsetComments = nset.get('comment()');
 
     assert.strictEqual(nsetAll.length, nset.length);
+    nsetAll.forEach(function(node, idx) {
+        assert.strictEqual(node, nset.childs[idx]);
+    });
     assert.strictEqual(nsetTags.length, 2);
     nsetTags.forEach(function(tag) {
             assert.ok(tag instanceof Tag);
@@ -96,6 +100,38 @@ test['NodeSet (get)'] = function(beforeExit, assert) {
 };
 
 test['NodeSet (find)'] = function(beforeExit, assert) {
+    var xmlSource = fs.readFileSync('./test/data/simple.xml', 'utf8'),
+        assertions = 0;
+
+    // @todo improve this test
+    xamel.xml2object(xmlSource, { trim : true }, function(error, xml) {
+        ++assertions;
+        assert.strictEqual(error, null);
+
+        assert.strictEqual(
+            xml.find('menu/food/name/text()').join(', '),
+            [   'Belgian Waffles',
+                'Strawberry Belgian Waffles',
+                'Berry-Berry Belgian Waffles',
+                'French Toast',
+                'Homestyle Breakfast' ].join(', ')
+            );
+    });
+
+    beforeExit(function() {
+        assert.strictEqual(assertions, 1);
+    });
+};
+
+test['NodeSet (explode)'] = function(beforeExit, assert) {
+    // @todo
+};
+
+test['NodeSet (hasAttr)'] = function(beforeExit, assert) {
+    // @todo
+};
+
+test['NodeSet (isAttr)'] = function(beforeExit, assert) {
     // @todo
 };
 

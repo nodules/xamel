@@ -8,8 +8,8 @@ test(
     function(files, beforeExit, assert) {
         var xml = files[0],
             errorCount = 0,
-            ITERATIONS = 10000,
-            EXPECTED_EXECUTION_TIME = .4,
+            ITERATIONS = 1000,
+            EXPECTED_EXECUTION_TIME = .5,
             iterations = ITERATIONS,
             iterationsDone = 0,
             timeStart = Date.now(),

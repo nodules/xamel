@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<breakfast_menu revision="2134" owner="Chief">
+<menu revision="2134" owner="Chief">
     <food id="1">
         <name>Belgian Waffles</name>
         <price discount="15" currency="USD">5.95</price>
@@ -30,4 +30,4 @@
         <description>two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>
         <calories>950</calories>
     </food>
-</breakfast_menu>
+</menu>
