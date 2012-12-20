@@ -1,7 +1,7 @@
 {
-  "name": "node-xamel",
+  "name": "xamel",
   "version": "0.1.0",
-  "description": "Fast and cozy way to extract data from XML and build XML from objects.",
+  "description": "Fast and cozy way to extract data from XML.",
   "main": "lib/xamel.js",
   "scripts": {
     "test": "node ./node_modules/expresso/bin/expresso"
