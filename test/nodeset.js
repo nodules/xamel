@@ -41,7 +41,7 @@ test['NodeSet (text)'] = function(beforeExit, assert) {
     var nset = new NodeSet(),
         TEXTS = ['Hello,', 'Brave', 'New', 'World!'];
 
-    nset.append(new Tag('root', {}, nset));
+    nset.append(new Tag('root'));
     TEXTS.forEach(function(text) {
         nset.append(text);
     });
@@ -67,9 +67,9 @@ test['NodeSet (get)'] = function(beforeExit, assert) {
     var nset = new NodeSet(
             new Comment('the'),
             'Hello,',
-            new Tag('root', {}, null),
+            new Tag('root'),
             new Comment('wall'),
-            new Tag('help', {}, null),
+            new Tag('help'),
             'World!'),
         nsetAll = nset.get('node()'),
         nsetTags = nset.get('*'),
@@ -128,7 +128,7 @@ test['NodeSet (find)'] = function(beforeExit, assert) {
  * @param {Number} count of children to generate
  * @param {Function} generator (index, nset) returns node
  */
-function generateChilds(nset, count, generator) {
+function generateChildren(nset, count, generator) {
     var i = 0;
 
     for (; i < count; i++) {
@@ -137,11 +137,16 @@ function generateChilds(nset, count, generator) {
 }
 
 test['NodeSet (explode)'] = function(beforeExit, assert) {
-    var nset = new NodeSet('Hello', 'World', new Comment('test'), new Tag('xxx', {}, null)),
-        tag = new Tag('comments', {}, null),
+    var nset = new NodeSet(
+                'Hello',
+                'World',
+                new Comment('test'),
+                new Tag('xxx')
+            ),
+        tag = new Tag('comments'),
         nsetExploded;
 
-    generateChilds(tag, 100, function(i) {
+    generateChildren(tag, 100, function(i) {
         return new Tag('comment', { id : i }, tag);
     });
 
@@ -158,8 +163,8 @@ test['NodeSet (hasAttr)'] = function(beforeExit, assert) {
     var TAG_ONE = 'one',
         TAG_TWO = 'two',
         nset = new NodeSet(
-            new Tag(TAG_ONE, { one : 'true' }, null),
-            new Tag(TAG_TWO, { two : 'true' }, null)),
+            new Tag(TAG_ONE, { one : 'true' }),
+            new Tag(TAG_TWO, { two : 'true' })),
         nsetOne = nset.hasAttr('one'),
         nsetTwo = nset.hasAttr('two');
 
@@ -174,8 +179,8 @@ test['NodeSet (isAttr)'] = function(beforeExit, assert) {
     var TAG_ONE = 'one',
         TAG_TWO = 'two',
         nset = new NodeSet(
-                new Tag(TAG_ONE, { id : 1 }, null),
-                new Tag(TAG_TWO, { id : 2 }, null)),
+                new Tag(TAG_ONE, { id : 1 }),
+                new Tag(TAG_TWO, { id : 2 })),
         nsetOne = nset.isAttr('id', 1),
         nsetTwo = nset.isAttr('id', 2);
 
@@ -184,6 +189,16 @@ test['NodeSet (isAttr)'] = function(beforeExit, assert) {
 
     assert.strictEqual(nsetOne.childs[0].name, TAG_ONE);
     assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
+};
+
+test['NodeSet (eq)'] = function(beforeExit, assert) {
+    var nset = new NodeSet();
+
+    generateChildren(nset, 100, function(i) {
+        return new Tag('tag-' + i);
+    });
+
+    assert.strictEqual(nset.eq(50).name, 'tag-50');
 };
 
 module.exports = test;
