@@ -47,8 +47,8 @@ test['NodeSet (text)'] = function(beforeExit, assert) {
     });
     nset.append(new Comment('Jason Xamel'));
 
-    assert.strictEqual(nset.text().join(' '), TEXTS.join(' '));
-    assert.deepEqual(nset.text(), TEXTS);
+    assert.strictEqual(nset.text(), TEXTS.join(' '));
+    assert.deepEqual(nset.text(true), TEXTS);
 };
 
 test['NodeSet (toJSON)'] = function(beforeExit, assert) {
