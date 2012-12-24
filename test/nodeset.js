@@ -116,6 +116,15 @@ test['NodeSet (find)'] = function(beforeExit, assert) {
                 'French Toast',
                 'Homestyle Breakfast' ].join(', ')
             );
+
+        assert.strictEqual(
+            xml.$('menu/food/name/text()'),
+            [   'Belgian Waffles',
+                'Strawberry Belgian Waffles',
+                'Berry-Berry Belgian Waffles',
+                'French Toast',
+                'Homestyle Breakfast' ].join(' ')
+        );
     });
 
     beforeExit(function() {
