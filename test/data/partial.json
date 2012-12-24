@@ -1,0 +1,19 @@
+[
+    {
+        "name" : "customer",
+        "childs" : [
+            {
+                "name" : "name",
+                "text" : "Jimi Hendrix"
+            },
+            {
+                "name" : "time",
+                "text" : "15:30"
+            },
+            {
+                "name" : "billing",
+                "text" : "credit"
+            }
+        ]
+    }
+]

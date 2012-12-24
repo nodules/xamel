@@ -29,5 +29,10 @@
         <price currency="EUR">6.95</price>
         <description>two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>
         <calories>950</calories>
+        <customer>
+            <name>Jimi Hendrix</name>
+            <time>15:30</time>
+            <billing>credit</billing>
+        </customer>
     </food>
 </menu>

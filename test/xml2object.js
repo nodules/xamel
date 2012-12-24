@@ -12,7 +12,26 @@ test(
 
         xamel.xml2object(xml, { trim : true }, function(error, result) {
             assertions += 1;
-//            console.log(JSON.stringify(result));
+            //console.log(JSON.stringify(result));
+            assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
+        });
+
+        beforeExit(function() {
+            assert.equal(1, assertions, 'async assertions done');
+        });
+    });
+
+test(
+    'xml2object (partial tree building)',
+    ['simple.xml', 'partial.json'],
+    function(files, beforeExit, assert) {
+        var xml = files[0],
+            json = files[1],
+            assertions = 0;
+
+        xamel.xml2object(xml, { trim : true, buildPath : 'menu/food/customer' }, function(error, result) {
+            assertions += 1;
+            //console.log(JSON.stringify(result));
             assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
         });
 
