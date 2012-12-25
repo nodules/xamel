@@ -1,7 +1,8 @@
 var xamel = require('../lib/xamel'),
-    NodeSet = xamel.NodeSet,
-    Tag = xamel.Tag,
-    Comment = xamel.Comment,
+    xml = require('../lib/xml'),
+    NodeSet = xml.NodeSet,
+    Tag = xml.Tag,
+    Comment = xml.Comment,
     fs = require('fs'),
     test = {};
 

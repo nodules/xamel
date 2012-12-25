@@ -1,6 +1,6 @@
-var xamel = require('../lib/xamel'),
-    NodeSet = xamel.NodeSet,
-    Tag = xamel.Tag,
+var xml = require('../lib/xml'),
+    NodeSet = xml.NodeSet,
+    Tag = xml.Tag,
     test = {};
 
 test['Tag (constructor)'] = function(beforeExit, assert) {
@@ -28,9 +28,10 @@ test['Tag (attrs)'] = function(beforeExit, assert) {
 test['Tag (parent)'] = function(beforeExit, assert) {
     var parent = new Tag('root'),
         notParent = new Tag('root'),
-        tag = new Tag('xtag', null, parent);
+        tag = new Tag('xtag', parent);
 
     assert.strictEqual(tag.parent, parent);
+    assert.notStrictEqual(tag.parent, notParent)
 };
 
 test['Tag (toJSON)'] = function(beforeExit, assert) {

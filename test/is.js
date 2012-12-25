@@ -1,18 +1,9 @@
-var xamel = require('../lib/xamel'),
-    NodeSet = xamel.NodeSet,
-    Tag = xamel.Tag,
-    Comment = xamel.Comment,
-    is = xamel.is,
-    isNodeSet = xamel.isNodeSet,
+var xml = require('../lib/xml'),
+    NodeSet = xml.NodeSet,
+    Tag = xml.Tag,
+    Comment = xml.Comment,
+    is = xml.is,
     test = {};
-
-test['isNodeSet'] = function(beforeExit, assert) {
-    assert.strictEqual(isNodeSet('node'), false);
-    assert.strictEqual(isNodeSet(new Comment('comment')), false);
-    assert.strictEqual(isNodeSet(new Tag('node', {}, null)), false);
-    assert.ok(isNodeSet(new NodeSet()));
-    assert.strictEqual(isNodeSet([]), false);
-};
 
 test['is ("node()")'] = function(beforeExit, assert) {
     assert.ok(is('node()', 'node'));

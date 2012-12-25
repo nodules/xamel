@@ -1,5 +1,4 @@
-var xamel = require('../lib/xamel'),
-    Comment = xamel.Comment,
+var Comment = require('../lib/xml').Comment,
     test = {};
 
 test['Comment (constructor)'] = function(beforeExit, assert) {
