@@ -105,7 +105,7 @@ test['NodeSet (find)'] = function(beforeExit, assert) {
         assertions = 0;
 
     // @todo improve this test
-    xamel.xml2object(xmlSource, { trim : true }, function(error, xml) {
+    xamel.parse(xmlSource, { trim : true }, function(error, xml) {
         ++assertions;
         assert.strictEqual(error, null);
 

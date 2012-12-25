@@ -16,7 +16,7 @@ test(
             totalTime;
 
         while (iterations > 0) {
-            xamel.xml2object(xml, { trim : true }, function(error, result) {
+            xamel.parse(xml, { trim : true }, function(error, result) {
                 error && ++errorCount;
                 iterationsDone++;
             });

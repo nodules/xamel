@@ -3,14 +3,14 @@ var util = require('util'),
     xamel = require('../lib/xamel');
 
 test(
-    'xml2object (simple.xml)',
+    'xamel.parse (simple.xml)',
     ['simple.xml', 'simple.json'],
     function(files, beforeExit, assert) {
         var xml = files[0],
             json = files[1],
             assertions = 0;
 
-        xamel.xml2object(xml, { trim : true }, function(error, result) {
+        xamel.parse(xml, { trim : true }, function(error, result) {
             assertions += 1;
             //console.log(JSON.stringify(result));
             assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
@@ -22,14 +22,14 @@ test(
     });
 
 test(
-    'xml2object (partial tree building)',
+    'xamel.parse (partial tree building)',
     ['simple.xml', 'partial.json'],
     function(files, beforeExit, assert) {
         var xml = files[0],
             json = files[1],
             assertions = 0;
 
-        xamel.xml2object(xml, { trim : true, buildPath : 'menu/food/customer' }, function(error, result) {
+        xamel.parse(xml, { trim : true, buildPath : 'menu/food/customer' }, function(error, result) {
             assertions += 1;
             //console.log(JSON.stringify(result));
             assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
