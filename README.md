@@ -29,6 +29,8 @@ XML (query.xml)
 </query>
 ```
 
+JavaScript
+
 ```javascript
 var xamel = require('xamel'),
     xmlSource = require('fs').readFileAsync('./query.xml');
