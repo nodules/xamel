@@ -116,12 +116,21 @@ country/state/  # trailing '/' is not allowed
 Internally `NodeSet#$` calls `NodeSet#find`, but if last check in the path equals `text()` method
 returns concatenated string instead of NodeSet of strings:
 
-```
+```javascript
 xml.find('article/para/text()') => [ 'Text 1', 'Text of second para', ... ]
 xml.$('article/para/text()') => 'Text 1Text of second para...'
 ```
 
-### NodeSet#text
+### NodeSet#text(keepArray = false)
+
+Method returns content of text nodes in the NodeSet. If it called without argument or first arg 
+equals `false` result is string (concatenated text nodes content), else result is array of strings.
+
+```javascript
+nodeset.text(true) => ['1', '2', 'test']
+nodeset.text() => '12test'
+nodeset.text(false) => '12test'
+```
 
 ### NodeSet#hasAttr, NodeSet#isAttr
 
