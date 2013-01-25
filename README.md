@@ -81,7 +81,45 @@ function buildQuery(nodeset) {
 
 NodeSet provides a tons of the powerfull features!
 
-### NodeSet#find, NodeSet#$
+### NodeSet#find(path), NodeSet#$(path)
+
+These methods go through the tree trying to find nodes satisfing `path` expression and build a new NodeSet. 
+Result is NodeSet. Check `length` property to know is something found.
+
+Path looks like XPath, but really not it is. There is path grammar in BNF:
+
+```bnf
+<path> ::= <node-check> | <path> "/" <node-check>
+<node-check> ::= "node()" | "text()" | "comment()" | "cdata()" | "*" | "element()" | <xml-tag-name>
+```
+
+As described above, valid paths are
+```
+*
+country/state/city
+country/*/city
+*/*/city/text()
+text()
+country
+element/text()
+...
+```
+
+Invalid paths
+```
+/country        # leading '/' is not allowed
+country/state/  # trailing '/' is not allowed
+./state         # '.' are not supported <node-check>
+```
+
+`NodeSet#$` was designed as an alias for `NodeSet#find`, but finally slightly differs from it.
+Internally `NodeSet#$` calls `NodeSet#find`, but if last check in the path equals `text()` method
+returns concatenated string instead of NodeSet of strings:
+
+```
+xml.find('article/para/text()') => [ 'Text 1', 'Text of second para', ... ]
+xml.$('article/para/text()') => 'Text 1Text of second para...'
+```
 
 ### NodeSet#text
 
