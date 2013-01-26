@@ -9,7 +9,7 @@ and map/reduce operations. Also it's designed to be fast and memory-friendly.
 var xamel = require('xamel');
     
 xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
-    var answer = xml.$('data/number').text();
+    var answer = xml.$('data/number/text()');
     console.log( xml.$('data/text()'), answer );
 });
 ```
