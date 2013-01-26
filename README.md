@@ -10,7 +10,7 @@ var xamel = require('xamel');
     
 xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
     var answer = xml.$('data/number').text();
-    console.log( xml.$('data').text(), answer );
+    console.log( xml.$('data/text()'), answer );
 });
 ```
 
