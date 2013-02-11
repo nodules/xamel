@@ -1,7 +1,7 @@
 # Xamel
 
-Xamels goal is providing the easy way to extract data from XML using XPath-like expressions 
-and map/reduce operations. Also it's designed to be fast and memory-friendly.
+Xamel provides an easy way to extract data from XML using XPath-like expressions 
+and map/reduce operations. It's designed to be fast and memory-friendly.
 
 ## Quick start
 
@@ -14,12 +14,12 @@ xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
 });
 ```
 
-## NodeSets and map/reduce.
+## NodeSets and map/reduce
 
-Result of `xamel.parse(…)` is NodeSet. You can think NodeSet is an array of nodes (internally, it's true). 
-NodeSet provides all _non-mutators_ methods of the `Array.prototype`.
+Result of `xamel.parse(…)` is a NodeSet. You can think of NodeSet as an array of nodes (internally it's true). 
+NodeSet provides all _non-mutator_ methods of the `Array.prototype`.
 
-### Example of key-value query concatenation.
+### Example of key-value query concatenation
 
 XML (query.xml)
 
@@ -51,9 +51,9 @@ xamel.parse(xmlSource, function(err, xml) {
 } );
 ```
 
-## NodeSet keeps source nodes order
+## NodeSet preserves nodes' order
 
-So processing of a bad-designed xml, where order means, possible:
+So processing a bad-designed xml, where order of nodes is significant, is completely possible:
 
 XML (query.xml)
 
@@ -79,23 +79,23 @@ function buildQuery(nodeset) {
 }
 ```
 
-## O-o-ok, but why we needs for the NodeSet? Gi'me a regular Array!
+## Ok, but why we need a NodeSet? Why not a regular array?
 
-NodeSet provides some powerful methods to find, extract and process data from XML.
+NodeSet provides some powerful methods to find, extract and process data.
 
 ### find(path), $(path)
 
-These methods go through the tree trying to find nodes satisfing `path` expression and build a new NodeSet. 
-Result is NodeSet. Check `length` property to know is something found.
+These methods traverse the tree, trying to find nodes satisfying `path` expression. 
+Result is a NodeSet. `length` property should be used to check if something is found.
 
-Path looks like XPath, but really not it is. There is path grammar in BNF:
+Path looks pretty much similar to XPath, but it's not completely so. That's the path grammar in BNF:
 
 ```bnf
 <path> ::= <node-check> | <path> "/" <node-check>
 <node-check> ::= "node()" | "text()" | "comment()" | "cdata()" | "*" | "element()" | <xml-tag-name>
 ```
 
-As described above, valid paths are
+As described above, valid paths are:
 ```
 country
 country/state/city
@@ -107,15 +107,15 @@ element/text()
 ...
 ```
 
-Invalid paths
+Invalid paths:
 ```
 /country        # leading '/' is not allowed
 country/state/  # trailing '/' is not allowed
 ./state         # '.' are not supported <node-check>
 ```
 
-Method `NodeSet#$` was designed as an alias for `NodeSet#find`, but finally slightly differs from it.
-Internally `NodeSet#$` calls `NodeSet#find`, but method returns concatenated string instead of NodeSet, if last check in the path equals `text()`:
+Method `NodeSet#$` was designed as an alias for `NodeSet#find`, but it slightly differs.
+Internally `NodeSet#$` calls `NodeSet#find`, but method returns concatenated string instead of NodeSet, if last check in the path is `text()`:
 
 ```javascript
 xml.find('article/para/text()') => [ 'Text 1', 'Text of second para', ... ]
@@ -124,8 +124,8 @@ xml.$('article/para/text()') => 'Text 1Text of second para...'
 
 ### text(keepArray = false)
 
-Method returns content of text nodes in the NodeSet. If it called without argument or first arg 
-equals `false` result is string (concatenated text nodes content), else result is array of strings.
+Method returns content of text nodes in the NodeSet. Being called without an argument or with a first argument
+equals `false`, it returns a string (concatenated text nodes content). If not, result is an array of strings.
 
 ```javascript
 nodeset.text(true) => ['1', '2', 'test']
@@ -135,7 +135,7 @@ nodeset.text(false) => '12test'
 
 ### eq(index)
 
-Method returns NodeSet child node by its index.
+Method returns child node by its index.
 
 ```xml
 <article>
@@ -147,10 +147,10 @@ Method returns NodeSet child node by its index.
 JavaScript
 
 ```javascript
-var nodeset = xml.$('article/h1'),  // $ and find returns NodeSet
+var nodeset = xml.$('article/h1'),  // $ and find return NodeSet
     title = nodeset.eq(0);          // retrieve Tag from NodeSet
     
-console.log('Header level: %s', title.name[1]);  // use field of Tag
+console.log('Header level: %s', title.name[1]);  // use Tag's field
 ```
 
 ### hasAttr(name)
@@ -191,7 +191,7 @@ var currentItemTitle = xml.find('list/item').isAttr('current', 'yes').eq(0).text
 
 ### get(expr)
 
-Methods filters nodes satisfying `expr` and returns new NodeSet. 
+Method filters nodes satisfying `expr` and returns new NodeSet. 
 Argument `expr` is `<node-check>` as described above in the `NodeSet#find` section.
 
 ```xml
@@ -212,8 +212,8 @@ media.get('comment()') => NodeSet contains two comments: ' Music ', ' Video '
 media.get('item') => NodeSet contains two elements: <item>Pink…</item>, <item>Kids…</item>
 ```
 
-It looks same as `NodeSet#find` without traversing through the tree, 
-but call `nodeset.get(<CHECK>)` is a bit faster than `nodeset.find(<CHECK>)`.
+It looks the same as `NodeSet#find` without traversing through the tree, 
+but `nodeset.get(<CHECK>)` is a bit faster than `nodeset.find(<CHECK>)`.
 
 Method is used internally by `NodeSet#find`.
 
@@ -221,34 +221,34 @@ Method is used internally by `NodeSet#find`.
 
 ### Text
 
-Text nodes is represented by strings.
+Text nodes are represented by strings.
 
 ### Comment
 
 Fields:
- * `comment` represents comment content as string.
+ * `comment` represents comment content as a string.
 
 Methods:
  * `toString()` returns `comment` field value.
 
 ### Tag
 
-Tag is descendant of NodeSet, all `NodeSet.prototype` methods is available.
+Tag is a descendant of NodeSet, all `NodeSet.prototype` methods are available.
 
 Fields:
  * `name` contains XML tag name;
  * `attrs` is a hash of attributes;
- * `parent` points to parent tag or root nodeset.
+ * `parent` points to parent tag or a root NodeSet.
 
 Methods:
- * `attr(name)` returns attribute value by name or null if attribute isn't defined.
+ * `attr(name)` returns attribute value by name, or null if attribute isn't defined.
 
-## What the hell? I'm simply wanna translate XML to JSON!
+## Why such complexity? I just want to translate XML to JSON!
 
 ```javascript
-    require('xamel').parse(xmlString, function(err, xml) {
-        if (!err) {
-            console.log( JSON.stringify(xml) );
-        }
-    });
+require('xamel').parse(xmlString, function(err, xml) {
+    if (!err) {
+        console.log( JSON.stringify(xml) );
+    }
+});
 ```
