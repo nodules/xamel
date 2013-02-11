@@ -1,6 +1,6 @@
 {
   "name": "xamel",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Fast and cozy way to extract data from XML.",
   "main": "lib/xamel.js",
   "scripts": {
@@ -17,7 +17,16 @@
     "converter",
     "sax"
   ],
-  "author": "Philipp Kovalev",
+  "author": {
+    "name": "Philipp Kovalev",
+    "email": "twilightfeel@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Alexey Rybakov",
+      "email": "alexrybakov@yandex.ru"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
       "sax": "0.4.x"
