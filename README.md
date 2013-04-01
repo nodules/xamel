@@ -17,8 +17,8 @@ xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
 ## xamel.parse(xml, [options], callback)
 
  * `xml` string contains XML to parse;
- * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and only xamel option [buildPath](#buildpath);
- * `callback` called when parsing done, passes error if any and NodeSet.
+ * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and xamel-specific option [buildPath](#buildpath);
+ * `callback` called when parsing done, passes error or null as the first argument and NodeSet as the second argument.
 
 ### buildPath
 
@@ -54,7 +54,7 @@ xamel.parse(xmlSource, { buildPath : 'root/body/article' }, function(err, xml) {
 });
 ```
 
-Also you look at the [partial parsing test](https://github.com/kaero/node-xamel/blob/master/test/parse.js#L25).
+You can also check the [partial parsing test](https://github.com/kaero/node-xamel/blob/master/test/parse.js#L25).
 
 ## NodeSets and map/reduce
 
