@@ -14,6 +14,48 @@ xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
 });
 ```
 
+## xamel.parse(xml, [options], callback)
+
+ * `xml` string contains XML to parse;
+ * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and only xamel option [buildPath](#buildpath);
+ * `callback` called when parsing done, passes error if any and NodeSet.
+
+### buildPath
+
+Lets take an example:
+
+XML (article.xml)
+
+```xml
+<root>
+    <head>
+        ...
+    </head>
+    <body>
+        <article>
+            ...
+        </article>
+    </body>
+</root>
+```
+
+Suppose, you want only `<article>` and its content as result of the `parse`, so pass the `buildPath` option to the `parse`:
+
+```javascript
+var xamel = require('xamel'),
+    xmlSource = require('fs').readFileAsync('./article.xml');
+
+xamel.parse(xmlSource, { trim : true, buildPath : 'root/body/article' } function(err, xml) {
+    if (err !== null) {
+        throw err;
+    }
+
+    console.dir(JSON.stringify(xml));
+} );
+```
+
+Also you look at the [partial parsing test](https://github.com/kaero/node-xamel/blob/master/test/parse.js#L25).
+
 ## NodeSets and map/reduce
 
 Result of `xamel.parse(…)` is a NodeSet. You can think of NodeSet as an array of nodes (internally it's true). 
