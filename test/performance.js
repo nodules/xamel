@@ -9,7 +9,7 @@ test(
         var xml = files[0],
             errorCount = 0,
             ITERATIONS = 1000,
-            EXPECTED_EXECUTION_TIME = .5,
+            PERFORMANCE_FACTOR = Number(process.env["NODE_XAMEL_PERF_FACTOR"]) || .65,
             iterations = ITERATIONS,
             iterationsDone = 0,
             timeStart = Date.now(),
@@ -29,7 +29,7 @@ test(
 
         totalTime = Date.now() - timeStart;
         console.log('   performance: ' + ITERATIONS + ' in ' + (Date.now() - timeStart) + 'ms');
-        assert.ok(totalTime < (EXPECTED_EXECUTION_TIME * ITERATIONS));
+        assert.ok(totalTime < (PERFORMANCE_FACTOR * ITERATIONS));
 
         assert.strictEqual(errorCount, 0);
     });
