@@ -9,7 +9,7 @@ test(
         var xml = files[0],
             errorCount = 0,
             ITERATIONS = 1000,
-            PERFORMANCE_FACTOR = Number(process.env["NODE_XAMEL_PERF_FACTOR"]) || .65,
+            PERFORMANCE_FACTOR = Number(process.env["NODE_XAMEL_PERF_FACTOR"]) || .75,
             iterations = ITERATIONS,
             iterationsDone = 0,
             timeStart = Date.now(),
