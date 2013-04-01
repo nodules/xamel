@@ -45,13 +45,13 @@ Suppose, you want only `<article>` and its content as result of the `parse`, so 
 var xamel = require('xamel'),
     xmlSource = require('fs').readFileAsync('./article.xml');
 
-xamel.parse(xmlSource, { trim : true, buildPath : 'root/body/article' } function(err, xml) {
+xamel.parse(xmlSource, { buildPath : 'root/body/article' }, function(err, xml) {
     if (err !== null) {
         throw err;
     }
 
     console.dir(JSON.stringify(xml));
-} );
+});
 ```
 
 Also you look at the [partial parsing test](https://github.com/kaero/node-xamel/blob/master/test/parse.js#L25).
