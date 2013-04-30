@@ -10,7 +10,7 @@ test(
             json = files[1],
             assertions = 0;
 
-        xamel.parse(xml, { trim : true }, function(error, result) {
+        xamel.parse(xml, function(error, result) {
             assertions += 1;
             //console.log(JSON.stringify(result));
             assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
@@ -29,7 +29,7 @@ test(
             json = files[1],
             assertions = 0;
 
-        xamel.parse(xml, { trim : true, buildPath : 'menu/food/customer' }, function(error, result) {
+        xamel.parse(xml, { buildPath : 'menu/food/customer' }, function(error, result) {
             assertions += 1;
             //console.log(JSON.stringify(result));
             assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
