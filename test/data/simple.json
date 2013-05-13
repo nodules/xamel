@@ -45,6 +45,9 @@
                         "text" : "Strawberry Belgian Waffles"
                     },
                     {
+                        "name" : "photo"
+                    },
+                    {
                         "name" : "price",
                         "attrs" : {
                             "currency" : "USD"

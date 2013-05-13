@@ -12,7 +12,7 @@ test['CData (data)'] = function(beforeExit, assert) {
     var DATA = 'Hello!',
         cdata = new CData(DATA);
 
-    assert.strictEqual(cdata.data, DATA);
+    assert.strictEqual(cdata.getData(), DATA);
 };
 
 test['CData (toString)'] = function(beforeExit, assert) {

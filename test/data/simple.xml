@@ -8,6 +8,7 @@
     </food>
     <food id="2">
         <name>Strawberry Belgian Waffles</name>
+        <photo><![CDATA[data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASA...]]></photo>
         <price currency="USD">7.95</price>
         <description>light Belgian waffles covered with strawberries and whipped cream</description>
         <calories variance="0.05">900</calories>

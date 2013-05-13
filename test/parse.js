@@ -45,3 +45,22 @@ test(
             assert.equal(jsons.length, assertions, 'async assertions done');
         });
     });
+
+test(
+    'xamel.parse (cdata parsing)',
+    ['simple.xml', 'cdata.json'],
+    function(files, beforeExit, assert) {
+        var xml = files[0],
+            json = files[1],
+            assertions = 0;
+
+        xamel.parse(xml, { buildPath : '*/*/*/cdata()', cdata : true }, function(error, result) {
+            assertions += 1;
+            //console.log(JSON.stringify(result));
+            assert.deepEqual(JSON.parse(json), JSON.parse(JSON.stringify(result)), 'xml & json assertion');
+        });
+
+        beforeExit(function() {
+            assert.equal(1, assertions, 'async assertions done');
+        });
+    });
