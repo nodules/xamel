@@ -1,6 +1,6 @@
 {
   "name": "xamel",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Fast and cozy way to extract data from XML.",
   "main": "lib/xamel.js",
   "scripts": {
