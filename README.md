@@ -18,7 +18,9 @@ xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
 ## xamel.parse(xml, [options], callback)
 
  * `xml` string contains XML to parse;
- * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and xamel-specific option [buildPath](#buildpath);
+ * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and two xamel-specific options:
+ ** [buildPath](#buildpath);
+ ** `cdata` – if evaluated to `true` then `parse` process CDATA sections, `false` by default;
  * `callback` called when parsing done, passes error or null as the first argument and NodeSet as the second argument.
 
 ### buildPath
@@ -285,6 +287,13 @@ Fields:
 
 Methods:
  * `attr(name)` returns attribute value by name, or null if attribute isn't defined.
+
+### CData
+
+Methods:
+ * `getData()` returns CDATA section content;
+ * `toString()` similiar to `getData`;
+ * `toJSON()` returns object `{ cdata : "cdata content …" }`.
 
 ## Why such complexity? I just want to translate XML to JSON!
 
