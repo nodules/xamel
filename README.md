@@ -19,8 +19,8 @@ xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
 
  * `xml` string contains XML to parse;
  * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and two xamel-specific options:
- ** [buildPath](#buildpath);
- ** `cdata` – if evaluated to `true` then `parse` process CDATA sections, `false` by default;
+   * [`buildPath`](#buildpath)
+   * `cdata` – if evaluated to `true` then `parse` process CDATA sections, `false` by default;
  * `callback` called when parsing done, passes error or null as the first argument and NodeSet as the second argument.
 
 ### buildPath
