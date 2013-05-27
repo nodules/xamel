@@ -2,9 +2,9 @@
   "name": "xamel",
   "version": "0.1.13",
   "description": "Fast and cozy way to extract data from XML.",
-  "main": "lib/xamel.js",
+  "main": "./lib/xamel.js",
   "scripts": {
-    "test": "node ./node_modules/expresso/bin/expresso"
+    "test": "./node_modules/.bin/jshint --config ./.jshintrc ./lib && node ./node_modules/expresso/bin/expresso"
   },
   "repository": {
     "type": "git",
@@ -17,21 +17,24 @@
     "converter",
     "sax"
   ],
-  "author": {
-    "name": "Philipp Kovalev",
-    "email": "twilightfeel@gmail.com"
-  },
+  "author": "Philipp Kovalev <twilightfeel@gmail.com> (https://github.com/kaero)",
+  "maintainers": [
+    "Philipp Kovalev <twilightfeel@gmail.com> (https://github.com/kaero)"
+  ],
   "contributors": [
+    "Alexey Rybakov <alexrybakov@yandex.ru> (https://github.com/flackus)"
+  ],
+  "licenses": [
     {
-      "name": "Alexey Rybakov",
-      "email": "alexrybakov@yandex.ru"
+      "type": "MIT",
+      "url": "https://raw.github.com/kaero/node-xamel/master/LICENSE"
     }
   ],
-  "license": "MIT",
   "dependencies": {
-      "sax": "0.4.x"
+    "sax": "0.4.x"
   },
   "devDependencies": {
-      "expresso": "0.9.x"
+    "expresso": "0.9.x",
+    "jshint": "2.1.x"
   }
 }
