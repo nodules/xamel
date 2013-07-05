@@ -1,4 +1,4 @@
-# Xamel [![Build Status](https://secure.travis-ci.org/kaero/node-xamel.png)](http://travis-ci.org/kaero/node-xamel)
+# Xamel [![Build Status](https://secure.travis-ci.org/nodules/xamel.png)](http://travis-ci.org/nodules/xamel)
 
 
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
@@ -57,7 +57,7 @@ xamel.parse(xmlSource, { buildPath : 'root/body/article' }, function(err, xml) {
 });
 ```
 
-You can also check the [partial parsing test](https://github.com/kaero/node-xamel/blob/master/test/parse.js#L25).
+You can also check the [partial parsing test](https://github.com/nodules/xamel/blob/master/test/parse.js#L25).
 
 ## NodeSets and map/reduce
 
