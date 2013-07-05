@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<menu revision="2134" owner="Chief">
+    <food id="1">
+        <name>Belgian Waffles</name>
+        <price discount="15" currency="USD">5.95</price>
+        <description>two of our famous Belgian Waffles with plenty of real maple syrup</description>
+        <calories>650</calories>
+    </food>
+    <food id="2">
+        <name>Strawberry Belgian Waffles</name>
+        <photo><![CDATA[data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASA...]]></photo>
+        <price currency="USD">7.95</price>
+        <description>light Belgian waffles covered with strawberries and whipped cream</description>
+        <calories variance="0.05">900</calories>
+    </food>
+    <food id="3">
+        <name>Berry-Berry Belgian Waffles</name>
+        <price currency="EUR">8.95</price>
+        <description>light </a>Belgian waffles covered with an assortment of fresh berries and whipped cream</description>
+        <calories>900</calories>
+    </food>
+    <food id="4">
+        <name>French Toast</name>
+        <price currency="USD">4.50</price>
+        <description>thick slices made from our homemade sourdough bread</description>
+        <calories>600</calories>
+    </food>
+    <food id="5">
+        <name>Homestyle Breakfast</name>
+        <price currency="EUR">6.95</price>
+        <description>two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>
+        <calories>950</calories>
+        <customer>
+            <name>Jimi Hendrix</name>
+            <time>15:30</time>
+            <billing>credit</billing>
+        </customer>
+    </food>
+</menu>

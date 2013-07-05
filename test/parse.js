@@ -64,3 +64,21 @@ test(
             assert.equal(1, assertions, 'async assertions done');
         });
     });
+
+test(
+    'xamel.parse (broken xml)',
+    ['broken.xml'],
+    function(files, beforeExit, assert) {
+        var xml = files[0],
+            assertions = 0;
+
+        xamel.parse(xml, function(error, result) {
+            assertions += 1;
+            assert.ok(error instanceof Error, 'error passed');
+            assert.strictEqual(result, null, 'result is null');
+        });
+
+        beforeExit(function() {
+            assert.equal(1, assertions, 'callback called only one time');
+        });
+    });
