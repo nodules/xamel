@@ -21,7 +21,7 @@ test(
 
         if (process.env['TRAVIS'] === 'true') {
             console.log('   Travis-CI environment detected, skip performance test');
-            return assert.ok(true);
+            return done();
         }
 
         while (iterations > 0) {
