@@ -22,11 +22,11 @@ function parse(done) {
             done(count * (1 - last[1] * 1e-9));
         }
     });
-};
+}
 
 function testRun(done) {
     count = 0;
-    ts = process.hrtime()
+    ts = process.hrtime();
 
     parse(function(count) {
         total.push(count);
@@ -39,7 +39,7 @@ function testRun(done) {
             }, 0) / TOTAL_EXECUTIONS));
         }
     });
-};
+}
 
 testRun(function(result) {
     console.log('%d ops/sec, %d test runs', result, TOTAL_EXECUTIONS);
