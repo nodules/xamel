@@ -4,6 +4,10 @@
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
 and map/reduce operations. It's designed to be fast and memory-friendly.
 
+## Quick note about parsing backends
+
+Since version 0.2 xamel doesn't bundles with any XML parsing backend. It provides an API to attach any SAX parser what fits your needs. Support for sax-js and node-expat bundled within module, but you must install parsing module manualy or add one to application dependencies.
+
 ## Quick start
 
 ```javascript
