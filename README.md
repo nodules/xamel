@@ -4,11 +4,21 @@
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
 and map/reduce operations. It's designed to be fast and memory-friendly.
 
-## Quick note about parsing backends
+## Notes about XML parsers
 
-Since version 0.2 xamel doesn't bundles with any XML parsing backend. It provides an API to attach any SAX parser what fits your needs. Support for sax-js and node-expat bundled within module, but you must install parsing module manualy or add one to application dependencies.
+If you are using xamel version >=0.2.0, then you must install supported XML parser module ([sax-js](http://npm.im/sax) or [node-expat](http://npm.im/node-expat)) besides xamel itself.
+
+Since version 0.2 xamel is not bundled with any XML parser. It supports [sax-js](http://npm.im/sax) and [node-expat](http://npm.im/node-expat) out of the box, but feel free to fork, implement another parser support and PR changes back!
 
 ## Quick start
+
+Install xamel and XML parser for it:
+
+```bash
+npm install xamel sax
+```
+
+Try it!
 
 ```javascript
 var xamel = require('xamel');
@@ -22,9 +32,13 @@ xamel.parse('<data>Answer: %s<number>42</number></data>', function(err, xml) {
 ## xamel.parse(xml, [options], callback)
 
  * `xml` string contains XML to parse;
- * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and two xamel-specific options:
-   * [`buildPath`](#buildpath)
+ * `options` hash of parsing options, includes [sax options](https://github.com/isaacs/sax-js#arguments), incapsulates sax param `strict` as an option, and some xamel-specific options:
+   * `parser` – supported XML parser name:
+     * `'sax'` – sax-js (xamel tries to use it by default),
+     * `'expat' – node-expat`;
+   * [`buildPath`](#buildpath);
    * `cdata` – if evaluated to `true` then `parse` process CDATA sections, `false` by default;
+   * `trim` – skip empty text nodes while tree building (supported for node-expat in the same way as sax-js do);
  * `callback` called when parsing done, passes error or null as the first argument and NodeSet as the second argument.
 
 ### buildPath
