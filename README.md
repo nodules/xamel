@@ -8,7 +8,9 @@ and map/reduce operations. It's designed to be fast and memory-friendly.
 
 If you are using xamel version >=0.2.0, then you must install supported XML parser module ([sax-js](http://npm.im/sax) or [node-expat](http://npm.im/node-expat)) besides xamel itself.
 
-Since version 0.2 xamel is not bundled with any XML parser. It supports [sax-js](http://npm.im/sax) and [node-expat](http://npm.im/node-expat) out of the box, but feel free to fork, implement another parser support and PR changes back!
+Since version 0.2 xamel is no longer bundled with any XML parser. It supports [sax-js](http://npm.im/sax) and [node-expat](http://npm.im/node-expat) out of the box, but feel free to fork, implement another parser support and PR changes back!
+
+Read [more about parsing backends](#parsing-backends).
 
 ## Quick start
 
@@ -322,3 +324,33 @@ require('xamel').parse(xmlString, function(err, xml) {
     }
 });
 ```
+
+## Parsing backends
+
+### Supported backends
+
+#### [sax-js](http://npm.im/sax) – `sax`
+
+SAX parser in JavaScript. It's pros and cons of sax-js: you can use it if you don't want or cann't deal with native Node.js addons. But you have to sacrifice holy cow of the performance.
+
+#### [node-expat](http://npm.im/node-expat) – `expat`
+
+SAX parser in C. Fast as thunder, but must be compiled duering installation. If your prodution enviroment consists of many machines with different archs then the binary module may be a headache.
+
+### Benchmark
+
+Benchmark [bundled](./test/bench/index.js) with module, you can try it in your own environment on data volumes which fits your application.
+
+```console
+$ node ./test/bench/index.js
+sax: 2554 ops/sec, 10 test runs
+expat: 6321 ops/sec, 10 test runs
+done.
+```
+
+### How to add support for another SAX-compatible parser?
+
+* fork xamel repository;
+* add your parsing backend to [lib/parser](./lib/parser/) directory; use existing backends as the reference, it's easy;
+* add description about backend to README (`parser` option values description and parser specific options in the same README section);
+* create pull-request to xamel master branch.
