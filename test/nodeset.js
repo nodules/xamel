@@ -1,4 +1,5 @@
 var xamel = require('../lib/xamel'),
+    assert = require('chai').assert,
     xml = require('../lib/xml'),
     NodeSet = xml.NodeSet,
     Tag = xml.Tag,
@@ -6,7 +7,7 @@ var xamel = require('../lib/xamel'),
     fs = require('fs'),
     test = {};
 
-test['NodeSet (constructor)'] = function(beforeExit, assert) {
+test['NodeSet (constructor)'] = function() {
     var nset = new NodeSet('Hello,', 'World!'),
         ARRAY = ['Hello,', 'World!'];
 
@@ -15,7 +16,7 @@ test['NodeSet (constructor)'] = function(beforeExit, assert) {
     assert.deepEqual(nset.childs, ARRAY);
 };
 
-test['NodeSet (append)'] = function(beforeExit, assert) {
+test['NodeSet (append)'] = function() {
     var nset = new NodeSet(),
         TEXT = 'hello';
 
@@ -25,10 +26,10 @@ test['NodeSet (append)'] = function(beforeExit, assert) {
     assert.strictEqual(nset.childs[0], TEXT);
 };
 
-test['NodeSet (length)'] = function(beforeExit, assert) {
+test['NodeSet (length)'] = function() {
     var nset = new NodeSet(),
         TEXT = 'hello',
-        COUNT = parseInt(Math.random() * 100) + 50,
+        COUNT = parseInt(Math.random() * 100, 10) + 50,
         i = 0;
 
     assert.strictEqual(nset.length, 0);
@@ -38,7 +39,7 @@ test['NodeSet (length)'] = function(beforeExit, assert) {
     assert.strictEqual(nset.length, COUNT);
 };
 
-test['NodeSet (text)'] = function(beforeExit, assert) {
+test['NodeSet (text)'] = function() {
     var nset = new NodeSet(),
         TEXTS = ['Hello,', 'Brave', 'New', 'World!'];
 
@@ -52,19 +53,19 @@ test['NodeSet (text)'] = function(beforeExit, assert) {
     assert.deepEqual(nset.text(true), TEXTS);
 };
 
-test['NodeSet (toJSON)'] = function(beforeExit, assert) {
+test['NodeSet (toJSON)'] = function() {
     var nset = new NodeSet('Hello,', 'World!');
 
     assert.strictEqual(JSON.stringify(nset), JSON.stringify(nset.childs));
 };
 
-test['NodeSet (toString)'] = function(beforeExit, assert) {
+test['NodeSet (toString)'] = function() {
     var nset = new NodeSet('Hello,', 'World!');
 
     assert.strictEqual(nset.toString(), nset.childs.toString());
 };
 
-test['NodeSet (get)'] = function(beforeExit, assert) {
+test['NodeSet (get)'] = function() {
     var nset = new NodeSet(
             new Comment('the'),
             'Hello,',
@@ -100,13 +101,11 @@ test['NodeSet (get)'] = function(beforeExit, assert) {
         });
 };
 
-test['NodeSet (find)'] = function(beforeExit, assert) {
-    var xmlSource = fs.readFileSync('./test/data/simple.xml', 'utf8'),
-        assertions = 0;
+test['NodeSet (find)'] = function(done) {
+    var xmlSource = fs.readFileSync('./test/data/simple.xml', 'utf8');
 
     // @todo improve this test
     xamel.parse(xmlSource, { trim : true }, function(error, xml) {
-        ++assertions;
         assert.strictEqual(error, null);
 
         assert.strictEqual(
@@ -126,10 +125,8 @@ test['NodeSet (find)'] = function(beforeExit, assert) {
                 'French Toast',
                 'Homestyle Breakfast' ].join(' ')
         );
-    });
 
-    beforeExit(function() {
-        assert.strictEqual(assertions, 1);
+        done();
     });
 };
 
@@ -146,7 +143,7 @@ function generateChildren(nset, count, generator) {
     }
 }
 
-test['NodeSet (explode)'] = function(beforeExit, assert) {
+test['NodeSet (explode)'] = function() {
     var nset = new NodeSet(
                 'Hello',
                 'World',
@@ -169,7 +166,7 @@ test['NodeSet (explode)'] = function(beforeExit, assert) {
     });
 };
 
-test['NodeSet (hasAttr)'] = function(beforeExit, assert) {
+test['NodeSet (hasAttr)'] = function() {
     var TAG_ONE = 'one',
         TAG_TWO = 'two',
         nset = new NodeSet(
@@ -185,7 +182,7 @@ test['NodeSet (hasAttr)'] = function(beforeExit, assert) {
     assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
 };
 
-test['NodeSet (isAttr)'] = function(beforeExit, assert) {
+test['NodeSet (isAttr)'] = function() {
     var TAG_ONE = 'one',
         TAG_TWO = 'two',
         nset = new NodeSet(
@@ -201,7 +198,7 @@ test['NodeSet (isAttr)'] = function(beforeExit, assert) {
     assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
 };
 
-test['NodeSet (eq)'] = function(beforeExit, assert) {
+test['NodeSet (eq)'] = function() {
     var nset = new NodeSet();
 
     generateChildren(nset, 100, function(i) {

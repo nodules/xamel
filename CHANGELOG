@@ -1,0 +1,11 @@
+xamel (0.2.0); urgency=low
+
+ * add support for external SAX parsers
+ (bundled with sax-js and node-expat support)
+ * add parsing benchmark
+ * add jscs to npm test toolchain
+ * add istanbul to npm test toolchain
+ * use mocha to run tests
+
+ -- Phillip Kovalev <twilightfeel@gmail.com>  Sat, 14 Sep 2013 12:08:47 +0400
+

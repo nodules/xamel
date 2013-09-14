@@ -1,10 +1,10 @@
 {
   "name": "xamel",
-  "version": "0.1.14",
+  "version": "0.2.0-pre1",
   "description": "Fast and cozy way to extract data from XML.",
   "main": "./lib/xamel.js",
   "scripts": {
-    "test": "./node_modules/.bin/jshint --config ./.jshintrc ./lib && node ./node_modules/expresso/bin/expresso"
+    "test": "./node_modules/.bin/jshint --config ./.jshintrc ./lib ./test && ./node_modules/.bin/jscs ./lib ./test && ./node_modules/.bin/istanbul cover _mocha -- -u exports -R spec ./test"
   },
   "repository": {
     "type": "git",
@@ -30,11 +30,14 @@
       "url": "https://raw.github.com/nodules/xamel/master/LICENSE"
     }
   ],
-  "dependencies": {
-    "sax": "0.4.x"
-  },
   "devDependencies": {
-    "expresso": "0.9.x",
-    "jshint": "2.1.x"
+    "mocha": "1.x",
+    "chai": "1.7.x",
+    "jshint": "2.1.x",
+    "jscs": ">=1.0.5",
+    "istanbul": "*",
+    "vow": "0.3.x",
+    "sax": "0.4.x",
+    "node-expat": "2.0.x"
   }
 }
