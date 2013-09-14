@@ -36,6 +36,7 @@
     "jshint": "2.1.x",
     "jscs": ">=1.0.5",
     "istanbul": "*",
+    "vow": "0.3.x",
     "sax": "0.4.x",
     "node-expat": "2.0.x"
   }

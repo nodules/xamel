@@ -1,57 +1,66 @@
 var xamel = require('../../lib/xamel'),
-    xmlString = require('fs').readFileSync(__dirname + '/../data/simple.xml'),
-    count,
-    executions = 0,
-    TOTAL_EXECUTIONS = 10,
-    total = [],
-    last,
-    ts,
-    parsers = [ 'sax', 'expat'],
-    parser = 0;
+    fs = require('fs'),
+    vow = require('vow'),
+    PARSERS = fs.readdirSync(__dirname + '/../../lib/parser/')
+        .map(function(parserFile) {
+            return parserFile.substr(0, parserFile.lastIndexOf('.'));
+        }),
+    XML_SOURCE = fs.readFileSync(__dirname + '/../data/simple.xml', 'utf8'),
+    TEST_TIME = process.env.TEST_TIME || 1000;
 
-function parse(done) {
-    xamel.parse(xmlString.toString(), { parser : parsers[parser] }, function(error) {
+function parse(parser, ts, count) {
+    var promise = vow.promise();
+
+    xamel.parse(XML_SOURCE, { parser : parser }, function(error) {
+        var tsDiff = process.hrtime(ts);
+
         if (error) {
-            throw error;
-        }
-
-        ++count;
-        last = process.hrtime(ts);
-
-        if (last[0] < 1) {
-            setImmediate(function() { parse(done); });
+            promise.reject(error);
+        } else if (tsDiff[0] * 1000 + tsDiff[1] * 1e-6 < TEST_TIME) {
+            setImmediate(function() {
+                parse(parser, ts, count + 1)
+                    .then(promise.fulfill.bind(promise))
+                    .fail(promise.reject.bind(promise));
+            });
         } else {
-            done(count * (1 - last[1] * 1e-9));
+            promise.fulfill(count);
         }
     });
+
+    return promise;
 }
 
-function testRun(done) {
-    count = 0;
-    ts = process.hrtime();
+function testParser(parser) {
+    var testRun = vow.promise();
 
-    parse(function(count) {
-        total.push(count);
-
-        if (executions++ < TOTAL_EXECUTIONS) {
-            setImmediate(function() { testRun(done); });
-        } else {
-            done(Math.floor(total.reduce(function(pv, cv) {
-                return pv + cv;
-            }, 0) / TOTAL_EXECUTIONS));
-        }
+    setImmediate(function() {
+        testRun.fulfill();
     });
+
+    return testRun
+        .then(function() {
+            return parse(parser, process.hrtime(), 1);
+        })
+        .then(function(count) {
+            console.log('%s: %s ops/sec', parser, count);
+        })
+        .fail(function(error) {
+            console.error('"%s" parser test has been failed: %s', parser, error);
+        });
 }
 
-function testDone(result) {
-    console.log('%s: %d ops/sec, %d test runs', parsers[parser], result, TOTAL_EXECUTIONS);
+(function testAll() {
+    var launch = vow.promise();
 
-    if (++parser < parsers.length) {
-        executions = 0;
-        testRun(testDone);
-    } else {
-        console.log('done.');
-    }
-}
+    console.log('Found parsing backends:', PARSERS.join(', '));
 
-testRun(testDone);
+    PARSERS
+        .reduce(function(lastPromise, parser) {
+            return lastPromise.then(testParser.bind(null, parser));
+        }, launch)
+        .then(function() {
+            console.log('done.');
+        });
+
+    launch.fulfill();
+})();
