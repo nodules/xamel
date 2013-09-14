@@ -343,8 +343,8 @@ Benchmark [bundled](./test/bench/index.js) with module, you can try it in your o
 ```console
 $ node ./test/bench/index.js
 Found parsing backends: expat, sax
-expat: 3052 ops/sec
-sax: 2014 ops/sec
+expat: 3153 ops/sec, overrun: 193851 ns
+sax: 2034 ops/sec, overrun: 124808 ns
 done.
 ```
 

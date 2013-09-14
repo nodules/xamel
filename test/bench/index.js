@@ -23,7 +23,10 @@ function parse(parser, ts, count) {
                     .fail(promise.reject.bind(promise));
             });
         } else {
-            promise.fulfill(count);
+            promise.fulfill({
+                count : count,
+                overrun : tsDiff[1]
+            });
         }
     });
 
@@ -41,8 +44,8 @@ function testParser(parser) {
         .then(function() {
             return parse(parser, process.hrtime(), 1);
         })
-        .then(function(count) {
-            console.log('%s: %s ops/sec', parser, count);
+        .then(function(result) {
+            console.log('%s: %s ops/sec, overrun: %s ns', parser, result.count, result.overrun);
         })
         .fail(function(error) {
             console.error('"%s" parser test has been failed: %s', parser, error);
