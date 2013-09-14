@@ -1,6 +1,5 @@
 # Xamel [![Build Status](https://secure.travis-ci.org/nodules/xamel.png)](http://travis-ci.org/nodules/xamel)
 
-
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
 and map/reduce operations. It's designed to be fast and memory-friendly.
 
@@ -343,8 +342,9 @@ Benchmark [bundled](./test/bench/index.js) with module, you can try it in your o
 
 ```console
 $ node ./test/bench/index.js
-sax: 2554 ops/sec, 10 test runs
-expat: 6321 ops/sec, 10 test runs
+Found parsing backends: expat, sax
+expat: 3052 ops/sec
+sax: 2014 ops/sec
 done.
 ```
 
