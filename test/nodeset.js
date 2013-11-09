@@ -12,17 +12,17 @@ test['NodeSet (constructor)'] = function(beforeExit, assert) {
 
     assert.strictEqual(typeof nset, 'object');
     assert.ok(nset instanceof NodeSet);
-    assert.deepEqual(nset.childs, ARRAY);
+    assert.deepEqual(nset.children, ARRAY);
 };
 
 test['NodeSet (append)'] = function(beforeExit, assert) {
     var nset = new NodeSet(),
         TEXT = 'hello';
 
-    assert.strictEqual(nset.childs.length, 0);
+    assert.strictEqual(nset.children.length, 0);
     nset.append(TEXT);
-    assert.strictEqual(nset.childs.length, 1);
-    assert.strictEqual(nset.childs[0], TEXT);
+    assert.strictEqual(nset.children.length, 1);
+    assert.strictEqual(nset.children[0], TEXT);
 };
 
 test['NodeSet (length)'] = function(beforeExit, assert) {
@@ -55,13 +55,13 @@ test['NodeSet (text)'] = function(beforeExit, assert) {
 test['NodeSet (toJSON)'] = function(beforeExit, assert) {
     var nset = new NodeSet('Hello,', 'World!');
 
-    assert.strictEqual(JSON.stringify(nset), JSON.stringify(nset.childs));
+    assert.strictEqual(JSON.stringify(nset), JSON.stringify(nset.children));
 };
 
 test['NodeSet (toString)'] = function(beforeExit, assert) {
     var nset = new NodeSet('Hello,', 'World!');
 
-    assert.strictEqual(nset.toString(), nset.childs.toString());
+    assert.strictEqual(nset.toString(), nset.children.toString());
 };
 
 test['NodeSet (get)'] = function(beforeExit, assert) {
@@ -80,14 +80,14 @@ test['NodeSet (get)'] = function(beforeExit, assert) {
 
     assert.strictEqual(nsetAll.length, nset.length);
     nsetAll.forEach(function(node, idx) {
-        assert.strictEqual(node, nset.childs[idx]);
+        assert.strictEqual(node, nset.children[idx]);
     });
     assert.strictEqual(nsetTags.length, 2);
     nsetTags.forEach(function(tag) {
             assert.ok(tag instanceof Tag);
         });
     assert.strictEqual(nsetRootTag.length, 1);
-    assert.strictEqual(nsetRootTag.childs[0].name, 'root');
+    assert.strictEqual(nsetRootTag.children[0].name, 'root');
     assert.strictEqual(nsetText.length, 2);
     assert.strictEqual(nsetText.join(' '), 'Hello, World!');
     nsetText.forEach(function(text) {
@@ -165,7 +165,7 @@ test['NodeSet (explode)'] = function(beforeExit, assert) {
     assert.strictEqual(nsetExploded.length, tag.length);
 
     nsetExploded.forEach(function(child, idx) {
-        assert.strictEqual(child, tag.childs[idx]);
+        assert.strictEqual(child, tag.children[idx]);
     });
 };
 
@@ -181,8 +181,8 @@ test['NodeSet (hasAttr)'] = function(beforeExit, assert) {
     assert.strictEqual(nsetOne.length, 1);
     assert.strictEqual(nsetTwo.length, 1);
 
-    assert.strictEqual(nsetOne.childs[0].name, TAG_ONE);
-    assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
+    assert.strictEqual(nsetOne.children[0].name, TAG_ONE);
+    assert.strictEqual(nsetTwo.children[0].name, TAG_TWO);
 };
 
 test['NodeSet (isAttr)'] = function(beforeExit, assert) {
@@ -197,8 +197,8 @@ test['NodeSet (isAttr)'] = function(beforeExit, assert) {
     assert.strictEqual(nsetOne.length, 1);
     assert.strictEqual(nsetTwo.length, 1);
 
-    assert.strictEqual(nsetOne.childs[0].name, TAG_ONE);
-    assert.strictEqual(nsetTwo.childs[0].name, TAG_TWO);
+    assert.strictEqual(nsetOne.children[0].name, TAG_ONE);
+    assert.strictEqual(nsetTwo.children[0].name, TAG_TWO);
 };
 
 test['NodeSet (eq)'] = function(beforeExit, assert) {
