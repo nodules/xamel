@@ -5,13 +5,13 @@
             "revision" : "2134",
             "owner" : "Chief"
         },
-        "childs" : [
+        "children" : [
             {
                 "name" : "food",
                 "attrs" : {
                     "id" : "1"
                 },
-                "childs" : [
+                "children" : [
                     {
                         "name" : "name",
                         "text" : "Belgian Waffles"
@@ -39,7 +39,7 @@
                 "attrs" : {
                     "id" : "2"
                 },
-                "childs" : [
+                "children" : [
                     {
                         "name" : "name",
                         "text" : "Strawberry Belgian Waffles"
@@ -72,7 +72,7 @@
                 "attrs" : {
                     "id" : "3"
                 },
-                "childs" : [
+                "children" : [
                     {
                         "name" : "name",
                         "text" : "Berry-Berry Belgian Waffles"
@@ -99,7 +99,7 @@
                 "attrs" : {
                     "id" : "4"
                 },
-                "childs" : [
+                "children" : [
                     {
                         "name" : "name",
                         "text" : "French Toast"
@@ -126,7 +126,7 @@
                 "attrs" : {
                     "id" : "5"
                 },
-                "childs" : [
+                "children" : [
                     {
                         "name" : "name",
                         "text" : "Homestyle Breakfast"
@@ -148,7 +148,7 @@
                     },
                     {
                         "name" : "customer",
-                        "childs" : [
+                        "children" : [
                             {
                                 "name" : "name",
                                 "text" : "Jimi Hendrix"

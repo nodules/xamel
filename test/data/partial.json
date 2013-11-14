@@ -1,7 +1,7 @@
 [
     {
         "name" : "customer",
-        "childs" : [
+        "children" : [
             {
                 "name" : "name",
                 "text" : "Jimi Hendrix"
