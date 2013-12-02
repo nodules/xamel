@@ -4,7 +4,7 @@
   "description": "Fast and cozy way to extract data from XML.",
   "main": "./lib/xamel.js",
   "scripts": {
-    "test": "jshint --config ./.jshintrc ./lib && node ./node_modules/expresso/bin/expresso"
+    "test": "jshint --config ./.jshintrc ./lib && jscs ./lib && node ./node_modules/expresso/bin/expresso"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "expresso": "0.9.x",
-    "jshint": "2.1.x"
+    "jshint": "2.1.x",
+    "jscs": ">=1.0.5"
   }
 }
