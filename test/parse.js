@@ -1,5 +1,4 @@
-var util = require('util'),
-    test = require('./lib/testFile').bind(module),
+var test = require('./lib/testFile').bind(module),
     xamel = require('../lib/xamel');
 
 test(
