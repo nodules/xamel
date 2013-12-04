@@ -1,6 +1,5 @@
 # Xamel [![Build Status](https://secure.travis-ci.org/nodules/xamel.png)](http://travis-ci.org/nodules/xamel)
 
-
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
 and map/reduce operations. It's designed to be fast and memory-friendly.
 

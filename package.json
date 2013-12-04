@@ -1,10 +1,10 @@
 {
   "name": "xamel",
-  "version": "0.1.14",
+  "version": "0.2.0-pre1",
   "description": "Fast and cozy way to extract data from XML.",
   "main": "./lib/xamel.js",
   "scripts": {
-    "test": "./node_modules/.bin/jshint --config ./.jshintrc ./lib && node ./node_modules/expresso/bin/expresso"
+    "test": "jshint --config ./.jshintrc ./lib && jscs ./lib && node ./node_modules/expresso/bin/expresso"
   },
   "repository": {
     "type": "git",
@@ -31,10 +31,12 @@
     }
   ],
   "dependencies": {
-    "sax": "0.4.x"
+    "sax": "0.4.x",
+    "xml-writer": "1.4.x"
   },
   "devDependencies": {
     "expresso": "0.9.x",
-    "jshint": "2.1.x"
+    "jshint": "2.1.x",
+    "jscs": ">=1.0.5"
   }
 }
