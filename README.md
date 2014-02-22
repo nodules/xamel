@@ -58,6 +58,13 @@ xamel.parse(xmlSource, { buildPath : 'root/body/article' }, function(err, xml) {
 
 You can also check the [partial parsing test](https://github.com/nodules/xamel/blob/master/test/parse.js#L25).
 
+## xamel.serialize(nodeset, [options])
+
+ * `nodeset` NodeSet to serialize;
+ * `options` parsing options:
+   * `header` – when evaluated to `false` the document will not contain a `<?xml?>` header, `true` by default;
+   * `pretty` – when evaluated to `true` the document will be beautified with indents and line breaks, `false` by default;
+
 ## NodeSets and map/reduce
 
 Result of `xamel.parse(…)` is a NodeSet. You can think of NodeSet as an array of nodes (internally it's true). 
