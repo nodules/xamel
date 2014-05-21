@@ -1,15 +1,20 @@
 var test = require('./lib/testFile').bind(module),
-    NodeSet = require('../lib/xml').NodeSet,
     xamel = require('../lib/xamel');
 
 test(
     'xamel.serialize (parse and back-serialize)',
     ['simple.xml'],
     function(files, beforeExit, assert) {
-        var sourceXML = files[0];
+        var assertions = 0,
+            sourceXML = files[0];
 
         xamel.parse(sourceXML, { trim : false, cdata : true }, function(error, nodeSet) {
+            ++assertions;
             assert.equal(sourceXML, xamel.serialize(nodeSet));
+        });
+
+        beforeExit(function() {
+            assert.strictEqual(assertions, 1);
         });
     }
 );
