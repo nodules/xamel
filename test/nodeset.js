@@ -4,7 +4,8 @@ var xamel = require('../lib/xamel'),
     Tag = xml.Tag,
     Comment = xml.Comment,
     fs = require('fs'),
-    test = {};
+    test = module.exports = {},
+    testFile = require('./lib/testFile').bind(module);
 
 test['NodeSet (constructor)'] = function(beforeExit, assert) {
     var nset = new NodeSet('Hello,', 'World!'),
@@ -51,6 +52,24 @@ test['NodeSet (text)'] = function(beforeExit, assert) {
     assert.strictEqual(nset.text(), TEXTS.join(' '));
     assert.deepEqual(nset.text(true), TEXTS);
 };
+
+testFile(
+    'NodeSet (recursive text)',
+    ['simple.xml'],
+    function (files, beforeExit, assert) {
+        var assertions = 0;
+
+        xamel.parse(files[0], function(error, xml) {
+            ++assertions;
+            assert.strictEqual(
+                xml.find('menu/food').eq(0).text(),
+                'Belgian Waffles 5.95 two of our famous Belgian Waffles with plenty of real maple syrup 650');
+        });
+
+        beforeExit(function() {
+            assert.strictEqual(assertions, 1, 'async assertions done');
+        });
+    });
 
 test['NodeSet (toJSON)'] = function(beforeExit, assert) {
     var nset = new NodeSet('Hello,', 'World!');
@@ -210,5 +229,3 @@ test['NodeSet (eq)'] = function(beforeExit, assert) {
 
     assert.strictEqual(nset.eq(50).name, 'tag-50');
 };
-
-module.exports = test;
