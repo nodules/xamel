@@ -3,6 +3,9 @@
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
 and map/reduce operations. It's designed to be fast and memory-friendly.
 
+If you prefer promise-based interface instead of callbacks, then look at
+[vow-xamel](https://github.com/dodev/vow-xamel) module.
+
 ## Quick start
 
 ```javascript
