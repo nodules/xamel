@@ -1,4 +1,8 @@
-# Xamel [![Build Status](https://secure.travis-ci.org/nodules/xamel.png)](http://travis-ci.org/nodules/xamel)
+Xamel [![NPM version][npm-image]][npm-link] [![Build status][build-image]][build-link]
+=====
+
+[![Dependency status][deps-image]][deps-link]
+[![devDependency status][devdeps-image]][devdeps-link]
 
 Xamel provides an easy way to extract data from XML using XPath-like expressions 
 and map/reduce operations. It's designed to be fast and memory-friendly.
@@ -313,3 +317,12 @@ require('xamel').parse(xmlString, function(err, xml) {
     }
 });
 ```
+
+[npm-image]: https://img.shields.io/npm/v/xamel.svg?style=flat
+[npm-link]: https://npmjs.org/package/xamel
+[build-image]: https://img.shields.io/travis/nodules/xamel.svg?style=flat
+[build-link]: https://travis-ci.org/nodules/xamel
+[deps-image]: https://img.shields.io/david/nodules/xamel.svg?style=flat
+[deps-link]: https://david-dm.org/nodules/xamel
+[devdeps-image]: https://img.shields.io/david/dev/nodules/xamel.svg?style=flat
+[devdeps-link]: https://david-dm.org/nodules/xamel#info=peerDependencies
